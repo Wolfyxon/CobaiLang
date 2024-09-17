@@ -25,7 +25,9 @@ pub enum Token {
     LSqBrace,           // [
     RSqBrace,           // ]
     Colon,              // :
-    Assign              // =
+    Assign,             // =
+    LessThan,           // <
+    GreaterThan,        // >
 }
 
 pub struct Lexer<'a> {
@@ -62,6 +64,10 @@ impl<'a> Lexer<'a> {
                 '[' => tok = Token::LSqBrace,
                 ']' => tok = Token::RSqBrace,
 
+                // Comparisons
+                '<' => tok = Token::LessThan,
+                '>' => tok = Token::GreaterThan,
+                
                 // Other
                 ':' => tok = Token::Colon,
                 '=' => tok = Token::Assign,
