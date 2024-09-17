@@ -1,4 +1,4 @@
-use std::{char, fmt, iter::Peekable, ptr::null, str::Chars};
+use std::{char, iter::Peekable, str::Chars};
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {
