@@ -6,6 +6,9 @@ pub enum Token {
     Eof,
     String(String),
     Identifier(String),
+    If,                 // if
+    Else,               // else
+    ElseIf,             // elif               
     Of,                 // of
     End,                // end
     Class,              // class
@@ -111,6 +114,9 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
+            "if" => Token::If,
+            "else" => Token::Else,
+            "elif" => Token::ElseIf,
             "of" => Token::Of,
             "end" => Token::End,
             "class" => Token::Class,
