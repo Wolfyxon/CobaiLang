@@ -26,6 +26,10 @@ pub enum Token {
     RSqBrace,           // ]
     Colon,              // :
     Assign,             // =
+    AssignAdd,          // +=
+    AssignSub,          // -=
+    AssignDiv,          // /=
+    AssignMul,          // *=
     Equals,             // ==
     NotEquals,          // !=
     LessThan,           // <
@@ -115,6 +119,10 @@ impl<'a> Lexer<'a> {
 
         match string.as_str() {
             "=" => return Token::Assign,
+            "+=" => return Token::AssignAdd,
+            "-=" => return Token::AssignSub,
+            "*=" => return Token::AssignMul,
+            "/=" => return Token::AssignDiv,
             "==" => return Token::Equals,
             "!=" => return Token::NotEquals,
             _ => return Token::Unknown
