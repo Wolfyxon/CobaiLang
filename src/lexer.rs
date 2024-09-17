@@ -10,6 +10,7 @@ pub enum Token {
     End,                // end
     Class,              // class
     Function,           // func
+    Import,             // import
     LParen,             // (
     RParen,             // )
     LBrace,             // {
@@ -114,6 +115,7 @@ impl<'a> Lexer<'a> {
             "end" => Token::End,
             "class" => Token::Class,
             "func" => Token::Function,
+            "import" => Token::Import,
 
             _ => Token::Identifier(string)
         }
