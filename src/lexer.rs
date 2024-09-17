@@ -8,7 +8,10 @@ pub enum Token {
     Identifier(String),
     If,                 // if
     Else,               // else
-    ElseIf,             // elif               
+    ElseIf,             // elif              
+    Not,                // not
+    And,                // and
+    Or,                 // or 
     Of,                 // of
     End,                // end
     Class,              // class
@@ -117,6 +120,9 @@ impl<'a> Lexer<'a> {
             "if" => Token::If,
             "else" => Token::Else,
             "elif" => Token::ElseIf,
+            "not" => Token::Not,
+            "and" => Token::And,
+            "or" => Token::Or,
             "of" => Token::Of,
             "end" => Token::End,
             "class" => Token::Class,
