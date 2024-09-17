@@ -142,6 +142,10 @@ impl<'a> Lexer<'a> {
     }
 }
 
+pub fn is_skip(ch: char) -> bool {
+    return ch == ' ' || ch == '\t' || ch == '\n';
+}
+
 pub fn lex(source: &str) -> Vec<Token> {
     let mut lexer = Lexer::new(source);
     let mut tokens: Vec<Token> = Vec::new();
