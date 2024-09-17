@@ -1,5 +1,3 @@
-use crate::lexer;
-
 pub enum ScopeProperty<'a> {
     Variable(Variable<'a>),
     Function(Function<'a>)
