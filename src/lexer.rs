@@ -1,4 +1,4 @@
-use std::{char, fmt, iter::Peekable, str::Chars};
+use std::{char, fmt, iter::Peekable, ptr::null, str::Chars};
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {
@@ -33,7 +33,7 @@ impl<'a> Lexer<'a> {
 
     pub fn next_token(&mut self) -> Token {
         while let Some(&ch) = self.chars.peek() {
-            let mut tok = Token::Unknown;
+            let mut tok: Token = Token::Unknown;
             let mut allow_next = true;
 
             match ch {
@@ -69,8 +69,6 @@ impl<'a> Lexer<'a> {
                     if ch.is_alphabetic() {
                         tok = self.read_identifier();
                         allow_next = false;
-                    } else {
-                        tok = Token::Unknown;
                     }
                 }
             }
@@ -78,7 +76,7 @@ impl<'a> Lexer<'a> {
             if allow_next {
                 self.chars.next();
             }
-            
+
             return tok;
         }
         return Token::Eof;
