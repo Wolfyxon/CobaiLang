@@ -133,3 +133,19 @@ impl<'a> Lexer<'a> {
         }
     }
 }
+
+pub fn lex(source: &str) -> Vec<Token> {
+    let mut lexer = Lexer::new(source);
+    let mut tokens: Vec<Token> = Vec::new();
+
+    loop {
+        let token = lexer.next_token();
+        tokens.push(token.clone());
+
+        if token == Token::Eof {
+            break;
+        }
+    }
+
+    return tokens;
+}
