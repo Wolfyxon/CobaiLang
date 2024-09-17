@@ -118,7 +118,6 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
-            "=" => Token::Assign,
             "+=" => Token::AssignAdd,
             "-=" => Token::AssignSub,
             "*=" => Token::AssignMul,
