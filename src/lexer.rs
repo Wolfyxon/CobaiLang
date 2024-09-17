@@ -26,6 +26,8 @@ pub enum Token {
     RSqBrace,           // ]
     Colon,              // :
     Assign,             // =
+    Equals,             // ==
+    NotEquals,          // !=
     LessThan,           // <
     GreaterThan,        // >
 }
