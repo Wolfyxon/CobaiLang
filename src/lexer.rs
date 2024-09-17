@@ -127,7 +127,7 @@ impl<'a> Lexer<'a> {
             "+" => Token::Add,
             "-" => Token::Sub,
             "*" => Token::Mul,
-            "/" => Token::Mul,
+            "/" => Token::Div,
             "^" => Token::Pow,
             
             "+=" => Token::AssignAdd,
