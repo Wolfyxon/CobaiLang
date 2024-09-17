@@ -1,4 +1,7 @@
 # CobaiLang
+> [!NOTE]
+> This project is on a experimental stage. It may not be completed anytime soon (if ever).
+
 Cobai is a high level statically typed object oriented programming language that aims for simplicity and strong typing.
 
 Inspired by GDScript, Lua and Java.
