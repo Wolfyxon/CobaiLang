@@ -35,6 +35,7 @@ pub enum Token {
     AssignSub,          // -=
     AssignDiv,          // /=
     AssignMul,          // *=
+    AssignPow,          // ^=
     Equals,             // ==
     NotEquals,          // !=
     LessThan,           // <
@@ -133,6 +134,7 @@ impl<'a> Lexer<'a> {
             "+=" => Token::AssignAdd,
             "-=" => Token::AssignSub,
             "*=" => Token::AssignMul,
+            "^=" => Token::AssignPow,
             "/=" => Token::AssignDiv,
             "==" => Token::Equals,
             "!=" => Token::NotEquals,
