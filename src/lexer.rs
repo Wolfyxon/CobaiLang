@@ -77,14 +77,14 @@ impl<'a> Lexer<'a> {
                 }
                 
                 _ => {
-                    if ch.is_alphabetic() {
-                        tok = self.read_identifier();
-                        allow_next = false;
-                    }
-                    
                     if is_skip(ch) {
                         self.chars.next();
                         continue;
+                    }
+                    
+                    if ch.is_alphabetic() {
+                        tok = self.read_identifier();
+                        allow_next = false;
                     }
                 }
             }
