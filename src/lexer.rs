@@ -42,42 +42,20 @@ impl<'a> Lexer<'a> {
                 }
 
                 // Parens
-                '(' => {
-                    tok = Token::LParen; 
-                }
-
-                ')' => {
-                    tok = Token::RParen;
-                }
+                '(' => tok = Token::LParen,
+                ')' => tok = Token::RParen,
 
                 // Braces
-                '{' => {
-                    tok = Token::LBrace;
-                }
-
-                '}' => {
-                    tok = Token::RBrace;
-                }
+                '{' => tok = Token::LBrace,
+                '}' => tok = Token::RBrace,
 
                 // Square braces
-                
-                '[' => {
-                    tok = Token::LSqBrace;
-                }
-
-                ']' => {
-                    tok = Token::RSqBrace;
-                }
+                '[' => tok = Token::LSqBrace,
+                ']' => tok = Token::RSqBrace,
 
                 // Other
-
-                ':' => {
-                    tok = Token::Colon;
-                }
-
-                '=' => {
-                    tok = Token::Assign;
-                }
+                ':' => tok = Token::Colon,
+                '=' => tok = Token::Assign,
 
                 // Advanced
 
