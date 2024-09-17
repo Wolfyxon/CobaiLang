@@ -114,6 +114,7 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
+            "=" => return Token::Assign,
             "==" => return Token::Equals,
             "!=" => return Token::NotEquals,
             _ => return Token::Unknown
