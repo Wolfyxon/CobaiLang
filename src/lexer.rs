@@ -96,6 +96,21 @@ impl<'a> Lexer<'a> {
         return Token::Eof;
     }
 
+    pub fn read_multiple(&mut self) -> Token {
+        let mut string = String::new();
+
+        while let Some(&ch) = self.chars.peek() {
+            if ch.is_alphabetic() || is_skip(ch) {
+                break;
+            }
+
+            string.push(ch);
+            self.chars.next();
+        }
+
+        return Token::String(string);
+    }
+
     pub fn read_string(&mut self, boundary: &char) -> Token {
         let mut string = String::new();
 
