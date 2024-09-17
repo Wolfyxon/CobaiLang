@@ -71,6 +71,7 @@ impl<'a> Scope<'a> {
 
 pub struct Property<'a> {
     parent: Scope<'a>,
+    public: bool,
     name: &'a str,
     constant: bool
 }
