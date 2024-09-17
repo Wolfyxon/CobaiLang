@@ -1,5 +1,5 @@
 mod lexer;
-mod parser;
+mod runtime;
 
 fn main() {
     let src = r#"
