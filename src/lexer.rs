@@ -110,7 +110,11 @@ impl<'a> Lexer<'a> {
             self.chars.next();
         }
 
-        return Token::String(string);
+        match string.as_str() {
+            "==" => return Token::Equals,
+            "!=" => return Token::NotEquals,
+            _ => return Token::Unknown
+        }
     }
 
     pub fn read_string(&mut self, boundary: &char) -> Token {
