@@ -80,6 +80,5 @@ pub struct Variable<'a> {
 }
 
 pub struct Function<'a> {
-    property: &'a Property<'a>,
-    caller: Option<&'a Function<'a>>
+    property: &'a Property<'a>
 }
