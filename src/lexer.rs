@@ -117,16 +117,16 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
-            "if" => Token::If,
-            "else" => Token::Else,
-            "elif" => Token::ElseIf,
-            "not" => Token::Not,
-            "and" => Token::And,
-            "or" => Token::Or,
-            "of" => Token::Of,
-            "end" => Token::End,
-            "class" => Token::Class,
-            "func" => Token::Function,
+            "if"     => Token::If,
+            "else"   => Token::Else,
+            "elif"   => Token::ElseIf,
+            "not"    => Token::Not,
+            "and"    => Token::And,
+            "or"     => Token::Or,
+            "of"     => Token::Of,
+            "end"    => Token::End,
+            "class"  => Token::Class,
+            "func"   => Token::Function,
             "import" => Token::Import,
 
             _ => Token::Identifier(string)
