@@ -25,6 +25,11 @@ pub enum Token {
     LSqBrace,           // [
     RSqBrace,           // ]
     Colon,              // :
+    Add,                // +
+    Sub,                // -
+    Mul,                // *
+    Div,                // /
+    Pow,                // ^
     Assign,             // =
     AssignAdd,          // +=
     AssignSub,          // -=
