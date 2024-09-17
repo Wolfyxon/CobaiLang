@@ -47,11 +47,6 @@ impl<'a> Lexer<'a> {
             let mut allow_next = true;
 
             match ch {
-                ' ' | '\t' | '\n' => {
-                    self.chars.next();
-                    continue;
-                }
-
                 // Parens
                 '(' => tok = Token::LParen,
                 ')' => tok = Token::RParen,
@@ -83,6 +78,11 @@ impl<'a> Lexer<'a> {
                     if ch.is_alphabetic() {
                         tok = self.read_identifier();
                         allow_next = false;
+                    }
+                    
+                    if is_skip(ch) {
+                        self.chars.next();
+                        continue;
                     }
                 }
             }
