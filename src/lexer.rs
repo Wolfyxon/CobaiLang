@@ -14,6 +14,7 @@ pub enum Token {
     Or,                 // or 
     Of,                 // of
     End,                // end
+    Break,              // break
     Class,              // class
     Function,           // func
     Import,             // import
@@ -125,6 +126,7 @@ impl<'a> Lexer<'a> {
             "or"     => Token::Or,
             "of"     => Token::Of,
             "end"    => Token::End,
+            "break"  => Token::Break,
             "class"  => Token::Class,
             "func"   => Token::Function,
             "import" => Token::Import,
