@@ -1,0 +1,13 @@
+var strings: String[] = [
+    "hello",
+    "aaaaa",
+    "bbbbbb"
+]
+
+print(strings.random()) // Will print a random string
+print(strings[0]) // will print 'hello'
+
+// Will print all values of 'strings'
+for string in strings:
+    print(string)
+end

@@ -1,0 +1,47 @@
+// Base class for all humans
+class Human:
+	// Define a constant public property 'quote'
+	public const quote: String = "I think therefore I am"
+
+	// Define a public property 'name'
+	public var name: String
+	
+	// Define a constructor 
+	public func new(name: String) self:
+		self.name = name	
+	end
+
+	// Add another version of the constructor (overload) that doesn't need a name
+	public func new() self:
+		self.new("Grzegorz Brzęczyszczykiewicz")
+	end
+
+	// Public method 'greet'
+	public func greet(another: Human):
+		self.say(`Hello, {another.name}`)
+	end
+
+	// Public method 'say'
+	public func say(message: String):
+		print(`{self.name} says: {message}`)
+	end
+
+	// Public method 'sayQuote'
+	public func sayQuote():
+		say(self.quote)
+	end
+end
+
+// Nerd class, based on Human
+class Nerd of Human:
+	// override 'quote'. Property type doesn't have to repeated
+	quote = "btw I use arch"
+end
+
+// Programmer class, based on Nerd
+class Programmer of Nerd: 
+	quote = "[high pitched demonic screaming]"
+end
+
+private someProgrammer = Programmer("Wolfyxon")
+someProgrammer.sayQuote()

@@ -1,0 +1,3 @@
+import "greeter": getGreeting
+
+print(getGreeting("Friderick von Fazbear"))

@@ -1,0 +1,8 @@
+var thread: Thread = detach(func():
+	while wait()
+		print("hi")
+	end
+end)
+
+wait(3)
+thread.stop()

@@ -1,0 +1,4 @@
+import "greeter"
+
+var name: String = input("What's your name? ")
+print(greeter.getGreeting(name))

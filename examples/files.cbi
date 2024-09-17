@@ -1,0 +1,26 @@
+import "fs": File, Directory
+
+var fileName: String = "test.txt"
+var dirName: String = "stuff"
+
+var file: File = File(fileName, File.WRITE)
+
+if not file.exists()
+	file.writeText("This is a test text file")
+end
+
+var dir: Directory = Directory(dirName)
+dir.create() // will create the dir if it doesn't exist
+
+print(`'{dirName}' contains:`)
+for fileOrDir in dir.getChildren():
+	var type: String = ""
+
+	if fileOrDir is File
+		type = "file"
+	elif fileOrDir is Directory
+		type = "directory"
+	end
+
+	print(`- '{fileOrDir.name}' which is a {type}`)
+end
