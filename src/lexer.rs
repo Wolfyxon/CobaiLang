@@ -8,7 +8,7 @@ pub enum Token {
     Identifier(String),
     If,                 // if
     Else,               // else
-    ElseIf,             // elif              
+    ElseIf,             // elif
     Not,                // not
     And,                // and
     Or,                 // or 
