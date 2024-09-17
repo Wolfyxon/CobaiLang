@@ -80,7 +80,7 @@ impl<'a> Lexer<'a> {
 
                 // Advanced
 
-                '=' | '!' | '+' | '-' | '*' | '/' => {
+                '=' | '!' | '+' | '-' | '*' | '/' | '^' => {
                     tok = self.read_multiple()
                 }
 
