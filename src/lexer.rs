@@ -67,9 +67,12 @@ impl<'a> Lexer<'a> {
                 
                 // Other
                 ':' => tok = Token::Colon,
-                '=' => tok = Token::Assign,
 
                 // Advanced
+
+                '=' | '!' => {
+                    tok = self.read_multiple()
+                }
 
                 '\'' | '"' => {
                     self.chars.next();
@@ -81,7 +84,7 @@ impl<'a> Lexer<'a> {
                         self.chars.next();
                         continue;
                     }
-                    
+
                     if ch.is_alphabetic() {
                         tok = self.read_identifier();
                         allow_next = false;
