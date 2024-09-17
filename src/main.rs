@@ -7,12 +7,7 @@ fn main() {
 
     "#;
 
-    let mut lexer = lexer::Lexer::new(src);
-    loop {
-        let token = lexer.next_token();
+    for token in lexer::lex(&src) {
         println!("{:?}", token);
-        if token == lexer::Token::Eof {
-            break;
-        }
     }
 }
