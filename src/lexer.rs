@@ -118,14 +118,14 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
-            "=" => return Token::Assign,
-            "+=" => return Token::AssignAdd,
-            "-=" => return Token::AssignSub,
-            "*=" => return Token::AssignMul,
-            "/=" => return Token::AssignDiv,
-            "==" => return Token::Equals,
-            "!=" => return Token::NotEquals,
-            _ => return Token::Unknown
+            "=" => Token::Assign,
+            "+=" => Token::AssignAdd,
+            "-=" => Token::AssignSub,
+            "*=" => Token::AssignMul,
+            "/=" => Token::AssignDiv,
+            "==" => Token::Equals,
+            "!=" => Token::NotEquals,
+            _ => Token::Unknown
         }
     }
 
