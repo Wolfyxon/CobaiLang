@@ -169,7 +169,7 @@ impl<'a> Lexer<'a> {
         let mut string = String::new();
 
         while let Some(&ch) = self.chars.peek() {
-            if !ch.is_alphabetic() {
+            if !ch.is_alphabetic() && !ch.is_numeric() {
                 break;
             }
 
