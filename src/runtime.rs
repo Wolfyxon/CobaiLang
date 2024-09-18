@@ -60,7 +60,7 @@ impl<'a> Scope<'a> {
         for anc in self.get_ancestors().iter() {
             let prop = anc.get_property(name);
             
-            if(prop.is_some()) {
+            if prop.is_some() {
                 return prop;
             }
         }
