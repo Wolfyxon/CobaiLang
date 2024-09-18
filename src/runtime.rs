@@ -1,19 +1,13 @@
 use crate::types::language::uncertain::Uncertain;
 
-pub enum Value {
+pub enum Value<'a> {
     Null,
     Bool(bool),
     Uncertain(Uncertain),
     Number(f32),
     String(String),
-    Function(Function),
+    Function(Function<'a>),
 } // TODO: Implement Dictionary and class instance
-
-pub struct FunctionContext<'a> {
-    function: &'a Function,
-    caller: &'a Function,
-    arguments: Vec<Value>
-}
 
 pub struct Scope<'a> {
     parent: Option<&'a Scope<'a>>,
@@ -77,9 +71,24 @@ pub struct Property<'a> {
     is_public: bool,
     is_constant: bool,
     name: &'a str,
-    value: Value
+    value: Value<'a>
 }
 
-pub struct Function {
-    is_static: bool
+pub struct Function<'a> {
+    is_static: bool,
+    arguments: Vec<Property<'a>>,
+    body: Scope<'a>
+}
+
+pub struct FunctionContext<'a> {
+    function: &'a Function<'a>,
+    caller: &'a Function<'a>,
+    scope: &'a Scope<'a>,
+    arguments: Vec<Value<'a>>,
+}
+
+impl<'a> FunctionContext<'a> {
+    pub fn get_argument(&self, name: &'a str) -> Option<&Property<'a>> {
+        return self.scope.get_property(name);
+    }
 }
