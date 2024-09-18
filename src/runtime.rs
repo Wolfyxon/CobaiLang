@@ -74,7 +74,7 @@ pub struct Property<'a> {
     public: bool,
     name: &'a str,
     constant: bool,
-    value: Value<'a>
+    value: Value
 }
 
 pub struct Function {
