@@ -4,6 +4,7 @@ pub enum Value {
     Null,
     Bool(bool),
     Uncertain(Uncertain),
+    Number(f32),
     String(String),
     Function(Function),
 } // TODO: Implement Dictionary and class instance
