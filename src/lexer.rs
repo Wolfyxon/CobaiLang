@@ -166,6 +166,20 @@ impl<'a> Lexer<'a> {
         return Token::String(string);
     }
 
+    pub fn read_number(&mut self) -> Token {
+        let mut string = String::new();
+
+        while let Some(&ch) = self.chars.peek() {
+            if !ch.is_numeric() {
+                break;
+            }
+
+            string.push(ch);
+        }
+
+        return Token::Number(string.parse().unwrap());
+    }
+
     pub fn read_identifier(&mut self) -> Token {
         let mut string = String::new();
 
