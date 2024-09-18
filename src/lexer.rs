@@ -185,6 +185,7 @@ impl<'a> Lexer<'a> {
             }
 
             string.push(ch);
+            self.chars.next();
         }
 
         return Token::Number(string.parse().unwrap());
