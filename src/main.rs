@@ -1,5 +1,7 @@
 mod types {
-    pub mod uncertain;
+    pub mod language {
+        pub mod uncertain;
+    }
 }
 
 mod lexer;

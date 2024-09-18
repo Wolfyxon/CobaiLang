@@ -1,4 +1,4 @@
-use crate::types::uncertain::Uncertain;
+use crate::types::language::uncertain::Uncertain;
 
 pub enum Value {
     Null,
