@@ -9,6 +9,12 @@ pub enum Value {
     Function(Function),
 } // TODO: Implement Dictionary and class instance
 
+pub struct FunctionContext<'a> {
+    function: &'a Function,
+    caller: &'a Function,
+    arguments: Vec<Value>
+}
+
 pub struct Scope<'a> {
     parent: Option<&'a Scope<'a>>,
     properties: Vec<Property<'a>>
