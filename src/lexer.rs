@@ -6,6 +6,8 @@ pub enum Token {
     Eof,
     String(String),
     Identifier(String),
+    True,               // true
+    False,              // false
     If,                 // if
     Else,               // else
     ElseIf,             // elif
@@ -172,6 +174,8 @@ impl<'a> Lexer<'a> {
         }
 
         match string.as_str() {
+            "true"   => Token::True,
+            "false"  => Token::False,
             "if"     => Token::If,
             "else"   => Token::Else,
             "elif"   => Token::ElseIf,
