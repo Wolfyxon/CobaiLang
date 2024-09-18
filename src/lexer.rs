@@ -107,6 +107,8 @@ impl<'a> Lexer<'a> {
                     if ch.is_alphabetic() {
                         tok = self.read_identifier();
                         allow_next = false;
+                    } else if ch.is_numeric() {
+                        tok = self.read_number();
                     }
                 }
             }
