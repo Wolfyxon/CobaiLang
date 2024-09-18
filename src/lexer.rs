@@ -6,7 +6,7 @@ pub enum Token {
     Eof,
     String(String),
     Identifier(String),
-    Number(u32),
+    Number(f32),
     True,               // true
     Maybe,              // maybe
     False,              // false
