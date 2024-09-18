@@ -10,6 +10,12 @@ Inspired by GDScript, Lua and Java.
 [Longer examples](https://github.com/Wolfyxon/cobai-lang/tree/main/examples)
 
 ```js
+// Instead of just true and false there's also unlikely, maybe and likely
+if maybe:
+  print("Maybe this will show up")
+```
+
+```js
 // Using := automatically assigns the type that input() returns to 'name'
 var name := input("What's your name? ")
 print("Hello", name)
