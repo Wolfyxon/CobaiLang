@@ -169,9 +169,19 @@ impl<'a> Lexer<'a> {
     pub fn read_number(&mut self) -> Token {
         let mut string = String::new();
 
+        let mut frac = false;
+
         while let Some(&ch) = self.chars.peek() {
             if !ch.is_numeric() {
-                break;
+                if ch == '.' {
+                    if frac {
+                        return Token::Unknown;
+                    } else {
+                        frac = true;
+                    }
+                } else {
+                    break;
+                }
             }
 
             string.push(ch);
