@@ -1,7 +1,35 @@
+use rand::Rng;
+
+extern crate rand;
+
 pub enum Uncertain {
     False,
     Maybe,
     True
+}
+
+impl Uncertain {
+    pub fn from_bool(b: bool) -> Self {
+        if b {
+            return Uncertain::True;
+        } else {
+            return Uncertain::False;
+        }
+    }
+
+    pub fn to_bool(&self) -> bool {
+        if self == Uncertain::True {
+            return true;
+        }
+        if self == Uncertain::False {
+            return false;
+        }
+
+        let maybe: u8 = rand::thread_rng().gen();
+
+        return maybe == 1;
+    }
+    
 }
 
 pub enum Value {
