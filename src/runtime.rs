@@ -1,8 +1,6 @@
 pub enum Uncertain {
     False,
-    Unlikely,
     Maybe,
-    Likely,
     True
 }
 
