@@ -24,6 +24,7 @@ pub enum Token {
     RBrace,             // }
     LSqBrace,           // [
     RSqBrace,           // ]
+    Dot,                // .
     Colon,              // :
     Add,                // +
     Sub,                // -
@@ -77,6 +78,7 @@ impl<'a> Lexer<'a> {
                 
                 // Other
                 ':' => tok = Token::Colon,
+                '.' => tok = Token::Dot,
 
                 // Advanced
 
