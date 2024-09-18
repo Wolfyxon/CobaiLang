@@ -10,8 +10,8 @@ pub enum Value<'a> {
 } // TODO: Implement Dictionary and class instance
 
 pub struct Scope<'a> {
-    parent: Option<&'a Scope<'a>>,
-    properties: Vec<Property<'a>>
+    pub parent: Option<&'a Scope<'a>>,
+    pub properties: Vec<Property<'a>>
 }
 
 impl<'a> Scope<'a> {
@@ -67,24 +67,24 @@ impl<'a> Scope<'a> {
 }
 
 pub struct Property<'a> {
-    parent: Scope<'a>,
-    is_public: bool,
-    is_constant: bool,
-    name: &'a str,
-    value: Value<'a>
+    pub parent: Scope<'a>,
+    pub is_public: bool,
+    pub is_constant: bool,
+    pub name: &'a str,
+    pub value: Value<'a>
 }
 
 pub struct Function<'a> {
-    is_static: bool,
-    arguments: Vec<Property<'a>>,
-    body: Scope<'a>
+    pub is_static: bool,
+    pub arguments: Vec<Property<'a>>,
+    pub body: Scope<'a>
 }
 
 pub struct FunctionContext<'a> {
-    function: &'a Function<'a>,
-    caller: &'a Function<'a>,
-    scope: &'a Scope<'a>,
-    arguments: Vec<Value<'a>>,
+    pub function: &'a Function<'a>,
+    pub caller: &'a Function<'a>,
+    pub scope: &'a Scope<'a>,
+    pub arguments: Vec<Value<'a>>,
 }
 
 impl<'a> FunctionContext<'a> {
