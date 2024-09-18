@@ -13,6 +13,7 @@ Inspired by GDScript, Lua, Java and my own stupidity.
 // Instead of just true and false there's also maybe
 if maybe:
   print("Maybe this will show up")
+end
 ```
 
 ```js
