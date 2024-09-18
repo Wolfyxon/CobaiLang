@@ -91,7 +91,8 @@ pub struct Property<'a> {
 }
 
 pub struct Variable<'a> {
-    property: &'a Property<'a>
+    property: &'a Property<'a>,
+    value: Value<'a>
 }
 
 pub struct Function<'a> {
