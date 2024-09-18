@@ -12,6 +12,9 @@ pub enum Token {
     If,                 // if
     Else,               // else
     ElseIf,             // elif
+    For,                // for
+    While,              // while
+    Loop,               // loop
     Not,                // not
     And,                // and
     Or,                 // or 
@@ -181,6 +184,9 @@ impl<'a> Lexer<'a> {
             "if"     => Token::If,
             "else"   => Token::Else,
             "elif"   => Token::ElseIf,
+            "for"    => Token::For,
+            "while"  => Token::While,
+            "loop"   => Token::Loop,
             "not"    => Token::Not,
             "and"    => Token::And,
             "or"     => Token::Or,
