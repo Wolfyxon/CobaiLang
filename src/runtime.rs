@@ -1,11 +1,22 @@
+use std::ops::Index;
+
 use crate::types::language::uncertain::Uncertain;
+
+pub enum Type {
+    Null,
+    Bool,
+    Uncertain,
+    Number,
+    String,
+    Function
+}
 
 pub enum Value<'a> {
     Null,
     Bool(bool),
     Uncertain(Uncertain),
     Number(f32),
-    String(String),
+    String(&'a str),
     Function(Function<'a>),
 } // TODO: Implement Dictionary and class instance
 
@@ -67,28 +78,70 @@ impl<'a> Scope<'a> {
 }
 
 pub struct Property<'a> {
-    pub parent: Scope<'a>,
+    pub parent: Option<Scope<'a>>,
     pub is_public: bool,
     pub is_constant: bool,
     pub name: &'a str,
+    pub value_type: Type,
     pub value: Value<'a>
+}
+
+impl<'a> Property<'a> {
+    pub fn arg(name: &'a str, value_type: Type) -> Self {
+        Property {
+            parent: None,
+            is_public: false,
+            is_constant: false,
+            value: Value::Null,
+            value_type: value_type,
+            name: name
+        }
+    }
 }
 
 pub struct Function<'a> {
     pub is_static: bool,
     pub arguments: Vec<Property<'a>>,
-    pub body: Scope<'a>
+    pub body: Option<Scope<'a>>,
+    pub internal_callback: Option<fn(ctx: FunctionContext) -> Value<'a>>
+}
+
+impl<'a> Function<'a> {
+    pub fn new_internal(function: fn(ctx: FunctionContext) -> Value<'a>, arguments: Vec<Property<'a>>) -> Self {
+        Function {
+            is_static: true,
+            body: None,
+            arguments: arguments,
+            internal_callback: Some(function)
+        }
+    }
+
+    pub fn call_anonymous(&self, args: Vec<Value>) -> Value<'a> {
+        let ctx = FunctionContext {
+            function: &self,
+            arguments: args,
+            scope: None,
+            caller: None
+        };
+
+        if self.internal_callback.is_some() {
+            return (self.internal_callback.unwrap())(ctx);
+        }
+
+        todo!();
+    }
 }
 
 pub struct FunctionContext<'a> {
     pub function: &'a Function<'a>,
-    pub caller: &'a Function<'a>,
-    pub scope: &'a Scope<'a>,
+    pub caller: Option<&'a Function<'a>>,
+    pub scope: Option<&'a Scope<'a>>,
     pub arguments: Vec<Value<'a>>,
 }
 
 impl<'a> FunctionContext<'a> {
-    pub fn get_argument(&self, name: &'a str) -> Option<&Property<'a>> {
-        return self.scope.get_property(name);
+    pub fn get_argument(&self, name: &'a str) -> Option<&Value<'a>> {
+        let idx = self.function.arguments.iter().position(|p| p.name == name ).unwrap();
+        return Some(&self.arguments[idx]);
     }
 }
