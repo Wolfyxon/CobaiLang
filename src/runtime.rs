@@ -12,14 +12,9 @@ pub enum Value<'a> {
     Function(Function<'a>),
 } // TODO: Implement Dictionary and class instance
 
-pub enum ScopeProperty<'a> {
-    Variable(Variable<'a>),
-    Function(Function<'a>)
-}
-
 pub struct Scope<'a> {
     parent: Option<&'a Scope<'a>>,
-    properties: Vec<ScopeProperty<'a>>
+    properties: Vec<Property<'a>>
 }
 
 impl<'a> Scope<'a> {
@@ -45,26 +40,17 @@ impl<'a> Scope<'a> {
         return ancestors;
     }
 
-    pub fn get_local_property(&self, name: &'a str) -> Option<&ScopeProperty<'a>> {
+    pub fn get_local_property(&self, name: &'a str) -> Option<&Property<'a>> {
         for prop in self.properties.iter() {
-            match prop {
-                ScopeProperty::Function(func) => {
-                    if func.property.name == name {
-                        return Some(prop);
-                    }
-                }
-                ScopeProperty::Variable(var) => {
-                    if var.property.name == name {
-                        return Some(prop);
-                    }
-                }
+            if prop.name == name {
+                return Some(prop);
             }
         }
 
         return None;
     }
 
-    pub fn get_property(&self, name: &'a str) -> Option<&ScopeProperty<'a>> {
+    pub fn get_property(&self, name: &'a str) -> Option<&Property<'a>> {
         let local = self.get_local_property(name);
         
         if local.is_some() {
@@ -87,11 +73,7 @@ pub struct Property<'a> {
     parent: Scope<'a>,
     public: bool,
     name: &'a str,
-    constant: bool
-}
-
-pub struct Variable<'a> {
-    property: &'a Property<'a>,
+    constant: bool,
     value: Value<'a>
 }
 
