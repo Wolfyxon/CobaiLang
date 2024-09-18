@@ -4,12 +4,12 @@ pub enum Uncertain {
     True
 }
 
-pub enum Value<'a> {
+pub enum Value {
     Null,
     Bool(bool),
     Uncertain(Uncertain),
     String(String),
-    Function(Function<'a>),
+    Function(Function),
 } // TODO: Implement Dictionary and class instance
 
 pub struct Scope<'a> {
