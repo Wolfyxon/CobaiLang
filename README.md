@@ -4,7 +4,7 @@
 
 Cobai is a high level statically typed object oriented programming language that aims for simplicity and strong typing.
 
-Inspired by GDScript, Lua and Java.
+Inspired by GDScript, Lua, Java and my own stupidity.
 
 ## Examples
 [Longer examples](https://github.com/Wolfyxon/cobai-lang/tree/main/examples)
