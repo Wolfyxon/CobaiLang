@@ -1,3 +1,11 @@
+pub enum Uncertain {
+    False,
+    Unlikely,
+    Maybe,
+    Likely,
+    True
+}
+
 pub enum ScopeProperty<'a> {
     Variable(Variable<'a>),
     Function(Function<'a>)
