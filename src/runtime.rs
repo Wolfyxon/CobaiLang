@@ -18,16 +18,15 @@ impl Uncertain {
     }
 
     pub fn to_bool(&self) -> bool {
-        if self == Uncertain::True {
-            return true;
+        match self {
+            Uncertain::True => true,
+            Uncertain::False => false,
+            
+            _ => {
+                let maybe: u8 = rand::thread_rng().gen();
+                return maybe == 1;
+            }
         }
-        if self == Uncertain::False {
-            return false;
-        }
-
-        let maybe: u8 = rand::thread_rng().gen();
-
-        return maybe == 1;
     }
     
 }
