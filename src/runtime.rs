@@ -1,5 +1,3 @@
-use std::ops::Index;
-
 use crate::types::language::uncertain::Uncertain;
 
 pub enum Type {
