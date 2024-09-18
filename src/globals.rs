@@ -1,4 +1,4 @@
-use crate::runtime::{FunctionContext, Value};
+/*use crate::runtime::{FunctionContext, Value};
 
 pub fn print<'a>(ctx: FunctionContext) -> Value<'a> {
     let text = &ctx.get_argument("text").unwrap();
@@ -12,4 +12,4 @@ pub fn print<'a>(ctx: FunctionContext) -> Value<'a> {
     }
 
     Value::Null
-}
+}*/
