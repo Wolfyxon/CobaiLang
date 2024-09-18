@@ -78,5 +78,5 @@ pub struct Property<'a> {
 }
 
 pub struct Function {
-    
+    is_static: bool
 }
