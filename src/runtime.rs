@@ -6,6 +6,14 @@ pub enum Uncertain {
     True
 }
 
+pub enum Value<'a> {
+    Null,
+    Bool(bool),
+    Uncertain(Uncertain),
+    String(String),
+    Function(Function<'a>),
+} // TODO: Implement Dictionary and class instance
+
 pub enum ScopeProperty<'a> {
     Variable(Variable<'a>),
     Function(Function<'a>)
