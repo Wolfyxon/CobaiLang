@@ -3,7 +3,7 @@ use crate::types::uncertain::Uncertain;
 pub enum Value {
     Null,
     Bool(bool),
-   Uncertain(Uncertain),
+    Uncertain(Uncertain),
     String(String),
     Function(Function),
 } // TODO: Implement Dictionary and class instance
