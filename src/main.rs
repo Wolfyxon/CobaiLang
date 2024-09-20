@@ -1,6 +1,7 @@
 mod types {
     pub mod language {
         pub mod uncertain;
+        pub mod types;
     }
 }
 
