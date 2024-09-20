@@ -17,9 +17,12 @@ end
 ```
 
 ```js
-// Using := automatically assigns the type that input() returns to 'name'
-var name := input("What's your name? ")
+
+// input() returns String, so 'name' is automatically assigned to that type
+var name = input("What's your name? ")
 print("Hello", name)
+
+name = 2 + 2 // Error! 'name' can only hold String values
 ```
 ```rs
 public class LifeForm:
@@ -38,8 +41,8 @@ public class Human(name: String):
   end
 end
 
-var h1 := Human("Bob")
-var h2 := Human("Alice")
+var h1 = Human("Bob")
+var h2 = Human("Alice")
 
 print(h1.getGreeting(h2))
 ```
