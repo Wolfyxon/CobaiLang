@@ -8,7 +8,7 @@ mod types {
 
 mod globals;
 mod lexer;
-
+mod parser;
 
 fn main() {
     let err = types::language::errors::Error::new("Test error", "idk", 123);
