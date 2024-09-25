@@ -1,3 +1,5 @@
+use parser::ASTNode;
+
 mod types {
     pub mod language {
         pub mod uncertain;
@@ -20,7 +22,21 @@ fn main() {
 
     "#;
 
-    for token in lexer::lex(&src) {
+    let tokens = lexer::lex(&src);
+    let root = parser::parse(&tokens).unwrap();
+
+    println!("= TOKENS =");
+    for token in &tokens {
         println!("{:?}", token);
+    }
+
+    println!("= TREE =");
+    match root {
+        ASTNode::Main(nodes) => {
+            for node in nodes {
+                println!("{:?}", node);
+            }
+        }
+        _=> panic!("oh no {:?}", root)
     }
 }
