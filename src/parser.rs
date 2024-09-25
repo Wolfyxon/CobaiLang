@@ -21,8 +21,8 @@ pub enum ASTNode {
     },
 
     Main(Vec<ASTNode>),
-    NumberLiteral(f32),
-    StringLiteral(String),
+    Number(f32),
+    String(String),
     Identifier(String)
 }
 
@@ -67,11 +67,11 @@ impl<'a> Parser<'a> {
                 }
 
                 Token::String(s) => {
-                    values.push(ASTNode::StringLiteral(s.to_string()));
+                    values.push(ASTNode::String(s.to_string()));
                 },
 
                 Token::Number(n) => {
-                    values.push(ASTNode::NumberLiteral(*n));
+                    values.push(ASTNode::Number(*n));
                 }
 
                 Token::Identifier(name) => {
