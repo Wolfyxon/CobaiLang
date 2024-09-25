@@ -23,7 +23,8 @@ pub enum ASTNode {
     Main(Vec<ASTNode>),
     Number(f32),
     String(String),
-    Identifier(String)
+    Identifier(String),
+    Eof
 }
 
 pub struct Parser<'a> {
@@ -42,6 +43,10 @@ impl<'a> Parser<'a> {
             match tok {
                 Token::Identifier(s) => {
                     return self.parse_identifier();
+                }
+
+                Token::Eof => {
+                    return Ok(ASTNode::Eof);
                 }
 
                 _ => {
@@ -139,4 +144,26 @@ impl<'a> Parser<'a> {
 
         Err(exp)
     }
+}
+
+pub fn parse(tokens: &Vec<Token>) -> Result<ASTNode, &str> {
+    let mut parser = Parser::new(tokens);
+    let mut nodes: Vec<ASTNode> = Vec::new();
+
+    loop {
+        let res = parser.parse_program();
+
+        if res.is_err() {
+            return Err(res.err().unwrap());
+        }
+
+        let node = res.unwrap();
+
+        match node {
+            ASTNode::Eof => break,
+            _ => nodes.push(node)
+        };
+    }
+
+    Ok(ASTNode::Main((nodes)))
 }
