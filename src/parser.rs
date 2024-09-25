@@ -1,36 +1,30 @@
 use std::iter::Peekable;
 use crate::lexer::Token;
 
-pub enum Instruction {
-    Unknown,
-    Set,
-    Get,
-    Call,
-    Define,
-    Math,
-    Logic,
-    If,
-    Loop,
-    While,
-    For,
-    End,
-    Eof
-}
+pub enum ASTNode {
+    Define {
+        object: String,
+        name: String,
+        type_name: String,
+        value: Box<ASTNode>
+    },
+    
+    Assign {
+        object: String,
+        name: String,
+        value: Box<ASTNode>
+    },
 
-pub struct InstructionNode<'a> {
-    instruction: Instruction,
-    parent: Option<&'a InstructionNode<'a>>,
-    children: Vec<InstructionNode<'a>>
-}
+    FunctionCall {
+        object: String,
+        name: String,
+        args: Vec<ASTNode>
+    },
 
-impl<'a> InstructionNode<'a> {
-    pub fn eof() -> Self {
-        InstructionNode {
-            instruction: Instruction::Eof,
-            parent: None,
-            children: Vec::new()
-        }
-    }
+    Main(Vec<ASTNode>),
+    NumberLiteral(f32),
+    StringLiteral(String),
+    Identifier(String)
 }
 
 pub struct Parser<'a> {
@@ -42,20 +36,5 @@ impl<'a> Parser<'a> {
         Parser {
             tokens: tokens.iter().peekable()
         }
-    }
-
-    pub fn next_node(&mut self) -> Result<InstructionNode, &'a str> {
-        while let Some(&tok) = self.tokens.peek() {
-            let res: Result<InstructionNode, &'a str>;
-            
-            match tok {
-                _ => res = Err("Unhandled token")
-            }
-
-            self.tokens.next();
-            return res;
-        }
-
-        return Ok(InstructionNode::eof());
     }
 }
