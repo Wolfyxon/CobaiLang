@@ -27,6 +27,11 @@ pub enum ASTNode {
     Eof
 }
 
+pub struct FunctionArgument {
+    name: String,
+    type_name: String,
+}
+
 pub struct Parser<'a> {
     tokens: Peekable<std::slice::Iter<'a, Token>>,
 }
