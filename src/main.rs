@@ -1,3 +1,4 @@
+use interpreter::Interpreter;
 use parser::ASTNode;
 
 mod types {
@@ -11,6 +12,7 @@ mod types {
 mod globals;
 mod lexer;
 mod parser;
+mod interpreter;
 
 fn main() {
     let err = types::language::errors::Error::new("Test error", "idk", 123);
@@ -31,7 +33,7 @@ fn main() {
     }
 
     println!("= TREE =");
-    match root {
+    match &root {
         ASTNode::Main(nodes) => {
             for node in nodes {
                 println!("{:?}", node);
@@ -39,4 +41,10 @@ fn main() {
         }
         _=> panic!("oh no {:?}", root)
     }
+
+    println!("= EXECUTION =");
+
+    let mut interpreter = Interpreter::new(&root);
+    interpreter.run();
+
 }
