@@ -32,6 +32,15 @@ pub struct FunctionArgument {
     pub type_name: String,
 }
 
+impl FunctionArgument {
+    pub fn new(name: String, type_name: String) -> Self {
+        FunctionArgument {
+            name: name,
+            type_name: type_name
+        }
+    }
+}
+
 pub struct Parser<'a> {
     tokens: Peekable<std::slice::Iter<'a, Token>>,
 }
