@@ -98,9 +98,9 @@ impl<'a> Interpreter<'a> {
         }
     }
 
-    pub fn get_function(&self, name: String) -> Option<&Function> {
+    pub fn get_function(&self, name: &String) -> Option<&Function> {
         for func in self.functions.iter() {
-            if func.name == name {
+            if &func.name == name {
                 return Some(func);
             }
         }
@@ -112,7 +112,11 @@ impl<'a> Interpreter<'a> {
         while let Some(&node) = self.nodes.peek() {
             match node {
                 ASTNode::FunctionCall {name, args} => {
-                    println!("Calling {}", name)
+                    let func = self.get_function(name);
+
+                    if func.is_none() {
+                        panic!("Unknown function '{}'", name);
+                    }
                 }
 
                 ASTNode::Eof => { break; }
