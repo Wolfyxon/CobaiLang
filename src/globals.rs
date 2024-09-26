@@ -1,15 +1,23 @@
-/*use crate::runtime::{FunctionContext, Value};
+use crate::{interpreter::{Function, FunctionContext, Value}, parser::FunctionArgument};
 
-pub fn print<'a>(ctx: FunctionContext) -> Value<'a> {
-    let text = &ctx.get_argument("text").unwrap();
-    
-    match text {
-        Value::String(s) => {
-            println!("{}", s);
+pub fn get_functions() -> Vec<Function> {
+    vec![
+        Function::new_internal("print".to_string(), Vec::new(), print)
+    ]
+}
+
+pub fn print(ctx: FunctionContext) {
+    for arg in ctx.args {
+        let mut arg_str = String::new();
+
+        match arg {
+            Value::String(s) => arg_str = s,
+            Value::Number(n) => arg_str = n.to_string(),
+
+            Value::Null => arg_str = "null".to_string(),
+            _ => arg_str = "<unprintable>".to_string()
         }
-        
-        _ => todo!("Only strings are supported for now")
-    }
 
-    Value::Null
-}*/
+        print!("{} ", arg_str);
+    }
+}
