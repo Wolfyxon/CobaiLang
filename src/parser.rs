@@ -90,6 +90,7 @@ impl<'a> Parser<'a> {
                 }
 
                 Token::RParen => {
+                    self.tokens.next();
                     return Ok(values);
                 }
 
