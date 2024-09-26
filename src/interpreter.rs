@@ -98,6 +98,16 @@ impl<'a> Interpreter<'a> {
         }
     }
 
+    pub fn get_function(&self, name: String) -> Option<&Function> {
+        for func in self.functions.iter() {
+            if func.name == name {
+                return Some(func);
+            }
+        }
+
+        None
+    }
+
     pub fn run(&mut self) {
         while let Some(&node) = self.nodes.peek() {
             match node {
