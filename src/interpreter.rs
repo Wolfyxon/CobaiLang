@@ -1,6 +1,6 @@
 use std::iter::Peekable;
 
-use crate::parser::{ASTNode, FunctionArgument};
+use crate::{globals, parser::{ASTNode, FunctionArgument}};
 pub enum Value {
     Number(f32),
     String(String),
@@ -81,6 +81,7 @@ impl Function {
 
 pub struct Interpreter<'a> {
     nodes: Peekable<std::slice::Iter<'a, ASTNode>>,
+    functions: Vec<Function> // temporary solution!
 }
 
 impl<'a> Interpreter<'a> {
@@ -88,7 +89,8 @@ impl<'a> Interpreter<'a> {
         match root {
             ASTNode::Main(nodes) => {
                 Interpreter {
-                    nodes: nodes.iter().peekable()
+                    nodes: nodes.iter().peekable(),
+                    functions: globals::get_functions()
                 }
             }
 
