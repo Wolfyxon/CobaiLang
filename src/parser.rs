@@ -28,8 +28,8 @@ pub enum ASTNode {
 }
 
 pub struct FunctionArgument {
-    name: String,
-    type_name: String,
+    pub name: String,
+    pub type_name: String,
 }
 
 pub struct Parser<'a> {
