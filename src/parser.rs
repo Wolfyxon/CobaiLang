@@ -54,7 +54,7 @@ impl<'a> Parser<'a> {
                 }
             }
 
-            self.tokens.next();
+            //self.tokens.next();
         }
 
         Err("Parsing already complete".to_string())
