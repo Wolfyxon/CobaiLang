@@ -38,7 +38,7 @@ impl<'a> Parser<'a> {
         }
     }
 
-    pub fn parse_program(&mut self) -> Result<ASTNode, &'a str> {
+    pub fn parse_program(&mut self) -> Result<ASTNode, String> {
         while let Some(&tok) = self.tokens.peek() {
             match tok {
                 Token::Identifier(s) => {
@@ -50,17 +50,17 @@ impl<'a> Parser<'a> {
                 }
 
                 _ => {
-                    return Err("Not implemented");
+                    return Err("Not implemented".to_string());
                 }
             }
 
             self.tokens.next();
         }
 
-        Err("Parsing already complete")
+        Err("Parsing already complete".to_string())
     }
 
-    pub fn parse_call_args(&mut self) -> Result<Vec<ASTNode>, &'a str> {
+    pub fn parse_call_args(&mut self) -> Result<Vec<ASTNode>, String> {
         let mut values: Vec<ASTNode> = Vec::new(); 
 
         while let Some(&tok) = self.tokens.peek() {
@@ -94,18 +94,18 @@ impl<'a> Parser<'a> {
                 }
 
                 _ => {
-                    return Err("help");
+                    return Err("help".to_string());
                 }
             }
 
             self.tokens.next();
         }
 
-        Err("Unexpected end of file")
+        Err("Unexpected end of file".to_string())
     }
 
-    pub fn parse_identifier(&mut self) -> Result<ASTNode, &'a str> {
-        let exp = "Expected assignment or function call";
+    pub fn parse_identifier(&mut self) -> Result<ASTNode, String> {
+        let exp = "Expected assignment or function call".to_string();
 
         let mut name = String::new();
 
@@ -146,7 +146,7 @@ impl<'a> Parser<'a> {
     }
 }
 
-pub fn parse(tokens: &Vec<Token>) -> Result<ASTNode, &str> {
+pub fn parse(tokens: &Vec<Token>) -> Result<ASTNode, String> {
     let mut parser = Parser::new(tokens);
     let mut nodes: Vec<ASTNode> = Vec::new();
 
