@@ -9,7 +9,7 @@ pub enum Value {
 
 pub struct FunctionContext<'a> {
     function: &'a Function,
-    args: Vec<Value>
+    pub args: Vec<Value>
 }
 
 impl<'a> FunctionContext<'a> {
