@@ -50,7 +50,7 @@ impl<'a> Parser<'a> {
                 }
 
                 _ => {
-                    return Err("Not implemented".to_string());
+                    return Err(format!("Unhandled token '{:?}'", tok));
                 }
             }
 
