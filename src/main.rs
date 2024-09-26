@@ -15,8 +15,8 @@ mod parser;
 mod interpreter;
 
 fn main() {
-    let err = types::language::errors::Error::new("Test error", "idk", 123);
-    err.print();
+    /*let err = types::language::errors::Error::new("Test error", "idk", 123);
+    err.print();*/
 
     let src = r#"
     
