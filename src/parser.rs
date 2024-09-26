@@ -173,11 +173,18 @@ pub fn parse(tokens: &Vec<Token>) -> Result<ASTNode, String> {
         }
 
         let node = res.unwrap();
+        let mut schedule_break = false;
 
-        match node {
-            ASTNode::Eof => break,
-            _ => nodes.push(node)
+        match &node {
+            ASTNode::Eof => schedule_break = true,
+            _ => {}
         };
+        
+        nodes.push(node);
+        
+        if schedule_break {
+            break;
+        }
     }
 
     Ok(ASTNode::Main((nodes)))
