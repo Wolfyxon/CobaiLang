@@ -49,6 +49,7 @@ pub enum Token {
     NotEquals,          // !=
     LessThan,           // <
     GreaterThan,        // >
+    Returns,            // ->
 }
 
 pub struct Lexer<'a> {
@@ -151,6 +152,8 @@ impl<'a> Lexer<'a> {
             "/=" => Token::AssignDiv,
             "==" => Token::Equals,
             "!=" => Token::NotEquals,
+            "->" => Token::Returns,
+            
             _ => Token::Unknown
         }
     }
