@@ -32,11 +32,11 @@ end
 public class Human of LifeForm:
   public var name: String
 
-  public func new(name: String) self:
+  public func new(name: String) -> self:
     self.name = name
   end
 
-  public func getGreeting(someone: Human) String:
+  public func getGreeting(someone: Human) -> String:
     return "Hi " + someone.name
   end
 end

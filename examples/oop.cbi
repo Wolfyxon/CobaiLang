@@ -7,12 +7,12 @@ class Human:
 	public var name: String
 	
 	// Define a constructor 
-	public func new(name: String) self:
+	public func new(name: String) -> self:
 		self.name = name	
 	end
 
 	// Add another version of the constructor (overload) that doesn't need a name
-	public func new() self:
+	public func new() -> self:
 		self.new("Grzegorz Brzęczyszczykiewicz")
 	end
 

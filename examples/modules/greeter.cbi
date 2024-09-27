@@ -5,7 +5,7 @@ public var greetings: String[] = [
     "Greetings"
 ]
 
-public func getGreeting(name: String?) String:
+public func getGreeting(name: String?) -> String:
     if not name
         return greetings.random()
     end
