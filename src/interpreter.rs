@@ -108,6 +108,16 @@ impl<'a> Interpreter<'a> {
         None
     }
 
+    pub fn node_to_value(node: &ASTNode) -> Option<Value> {
+        match node {
+            ASTNode::Number(n) => Some(Value::Number(*n)),
+            ASTNode::String(s) => Some(Value::String(s.clone())),
+
+            ASTNode::Identifier(name) => todo!("Variables are not implemented yet. Attempted getting: {}", name),
+            _ => panic!("Not a supported value node")
+        }
+    }
+
     pub fn run(&mut self) {
         while let Some(&node) = self.nodes.peek() {
             match node {
