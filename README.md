@@ -29,7 +29,7 @@ public class LifeForm:
   public var age: int = 0
 end
 
-public class Human(name: String):
+public class Human of LifeForm:
   public var name: String
 
   public func new(name: String) self:
