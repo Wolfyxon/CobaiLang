@@ -122,11 +122,7 @@ impl<'a> Interpreter<'a> {
         while let Some(&node) = self.nodes.peek() {
             match node {
                 ASTNode::FunctionCall {name, args} => {
-                    let func = self.get_function(name);
-
-                    if func.is_none() {
-                        panic!("Unknown function '{}'", name);
-                    }
+                    let func = self.get_function(name).expect(("Unknown function: ".to_string() + name).as_str());                   
                 }
 
                 ASTNode::Eof => { break; }
