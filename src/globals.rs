@@ -1,4 +1,4 @@
-use crate::{interpreter::{Function, FunctionContext, Value}, parser::FunctionArgument};
+use crate::interpreter::{Function, FunctionContext, Value};
 
 pub fn get_functions() -> Vec<Function> {
     vec![
