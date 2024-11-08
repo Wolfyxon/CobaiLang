@@ -1,4 +1,4 @@
-use interpreter::Interpreter;
+//use interpreter::Interpreter;
 use parser::ASTNode;
 
 mod types {
@@ -9,10 +9,9 @@ mod types {
     }
 }
 
-mod globals;
 mod lexer;
 mod parser;
-mod interpreter;
+//mod interpreter;
 
 fn main() {
     /*let err = types::language::errors::Error::new("Test error", "idk", 123);
@@ -44,7 +43,7 @@ fn main() {
 
     println!("= EXECUTION =");
 
-    let mut interpreter = Interpreter::new(&root);
-    interpreter.run();
+    /*let mut interpreter = Interpreter::new(&root);
+    interpreter.run();*/
 
 }
