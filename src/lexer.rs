@@ -24,6 +24,7 @@ pub enum Token {
     Break,              // break
     Class,              // class
     Function,           // func
+    Public,             // pub
     Import,             // import
     LParen,             // (
     RParen,             // )
@@ -228,6 +229,7 @@ impl<'a> Lexer<'a> {
             "break"  => Token::Break,
             "class"  => Token::Class,
             "func"   => Token::Function,
+            "pub"    => Token::Public, 
             "import" => Token::Import,
 
             _ => Token::Identifier(string)
