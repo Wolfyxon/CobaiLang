@@ -1,4 +1,4 @@
-use std::{env::args, iter::Peekable};
+use std::iter::Peekable;
 use crate::lexer::Token;
 
 #[derive(Debug, Clone, PartialEq)]
