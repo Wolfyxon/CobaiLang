@@ -1,11 +1,11 @@
-public var greetings: String[] = [
+pub var greetings: String[] = [
     "Hello",
     "Hi,
     "Welcome",
     "Greetings"
 ]
 
-public func getGreeting(name: String?) -> String:
+pub func getGreeting(name: String?) -> String:
     if not name
         return greetings.random()
     end

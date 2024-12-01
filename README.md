@@ -25,18 +25,18 @@ print("Hello", name)
 name = 2 + 2 // Error! 'name' can only hold String values
 ```
 ```rs
-public class LifeForm:
-  public var age: int = 0
+pub class LifeForm:
+  pub var age: int = 0
 end
 
-public class Human of LifeForm:
-  public var name: String
+pub class Human of LifeForm:
+  pub var name: String
 
-  public func new(name: String) -> self:
+  pub func new(name: String) -> self:
     self.name = name
   end
 
-  public func getGreeting(someone: Human) -> String:
+  pub func getGreeting(someone: Human) -> String:
     return "Hi " + someone.name
   end
 end
