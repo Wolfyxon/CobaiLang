@@ -1,6 +1,6 @@
 # MorskaLang
 > [!NOTE]
-> This project is on a experimental stage. It may not be completed anytime soon (if ever).
+> This project is in a very early experimental stage. It won't be completed anytime soon (if ever).
 
 Morska is a high level statically typed object oriented programming language that aims for simplicity and strong typing.
 
